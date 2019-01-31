@@ -42,12 +42,10 @@ sge_screen::sge_screen(SDL_Surface *screen)
 {
 	sge_screen::screen=screen;  //Our screen pointer
 	
-	SDL_assert(0 && "sge_screen");
-	/* Test some flags
+	/* Test some flags */
 	HW=(((screen->flags) & SDL_HWSURFACE) != 0);	
 	DB=(((screen->flags) & SDL_DOUBLEBUF) != 0);
 	FS=(((screen->flags) & SDL_FULLSCREEN) != 0);
-	*/
 	
 	/* Test the resolution of SDL_Delay() */
 	//sge_CalibrateDelay();
@@ -151,16 +149,14 @@ void sge_screen::update(void)
 			r[j++]=*i;	
 		}
 		
-		SDL_assert(0 && "sge_screen::update");
-		//SDL_UpdateRects(screen,rects.size(), r); //Let SDL update the rectangles
+		SDL_UpdateRects(screen,rects.size(), r); //Let SDL update the rectangles
 		
 		delete[] r;
 
 		rects.clear(); //Empty the list
 	}
 	else if(DB)   //double-buffered
-		SDL_assert(0 && "sge_screen::update");
-		//SDL_Flip(screen);
+		SDL_Flip(screen);
 }
 
 
